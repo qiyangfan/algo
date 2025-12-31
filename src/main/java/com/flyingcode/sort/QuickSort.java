@@ -210,26 +210,4 @@ public class QuickSort {
     dualPivotQuickSort(arr, great + 2, right); // 大于pivot2的区域
   }
 
-  /**
-   * 插入排序
-   * 用于小数组优化, 当数组长度较小时性能优于快排
-   *
-   * @param arr   待排序的整数数组
-   * @param left  左边界索引
-   * @param right 右边界索引
-   */
-  private void insertionSort(int[] arr, int left, int right) {
-    for (int i = left + 1; i <= right; i++) {
-      int key = arr[i];
-      int j = i - 1;
-
-      // 将大于key的元素向后移动
-      while (j >= left && arr[j] > key) {
-        arr[j + 1] = arr[j];
-        j--;
-      }
-
-      arr[j + 1] = key;
-    }
-  }
 }

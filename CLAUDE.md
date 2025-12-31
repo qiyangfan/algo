@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Related Documentation
 
-- **[COMMENT_RULES.md](COMMENT_RULES.md)** - Code comment standards and conventions
-- **[COMMENT_EXAMPLES.md](COMMENT_EXAMPLES.md)** - Code comment examples and templates
-- **[TEST_RULES.md](TEST_RULES.md)** - Test class writing standards
-- **[TEST_EXAMPLES.md](TEST_EXAMPLES.md)** - Test class writing examples
-- **[ALGORITHM_GUIDE.md](ALGORITHM_GUIDE.md)** - Algorithm implementation guide
+- **[docs/COMMENT_RULES.md](docs/COMMENT_RULES.md)** - Code comment standards and conventions
+- **[docs/COMMENT_EXAMPLES.md](docs/COMMENT_EXAMPLES.md)** - Code comment examples and templates
+- **[docs/TEST_RULES.md](docs/TEST_RULES.md)** - Test class writing standards
+- **[docs/TEST_EXAMPLES.md](docs/TEST_EXAMPLES.md)** - Test class writing examples
+- **[docs/ALGORITHM_GUIDE.md](docs/ALGORITHM_GUIDE.md)** - Algorithm implementation guide
 
 ---
 
@@ -118,8 +118,8 @@ mvn test -Dtest=Leet0070ClimbStairsTest
    - Implement static `solution()` method with core algorithm
 
 2. **Add Code Comments**
-   - Follow [COMMENT_RULES.md](COMMENT_RULES.md) for comment standards
-   - Reference [COMMENT_EXAMPLES.md](COMMENT_EXAMPLES.md) for templates
+   - Follow [docs/COMMENT_RULES.md](docs/COMMENT_RULES.md) for comment standards
+   - Reference [docs/COMMENT_EXAMPLES.md](docs/COMMENT_EXAMPLES.md) for templates
    - Include all required sections:
      - Class-level Javadoc
      - Algorithm design approach
@@ -129,8 +129,8 @@ mvn test -Dtest=Leet0070ClimbStairsTest
 
 3. **Create Test Class**
    - Create corresponding test class in `src/test/java/com/flyingcode/[package]/`
-   - Follow [TEST_RULES.md](TEST_RULES.md) for test standards
-   - Reference [TEST_EXAMPLES.md](TEST_EXAMPLES.md) for test templates
+   - Follow [docs/TEST_RULES.md](docs/TEST_RULES.md) for test standards
+   - Reference [docs/TEST_EXAMPLES.md](docs/TEST_EXAMPLES.md) for test templates
    - Include comprehensive test coverage:
      - Basic functionality (2-3 tests)
      - Boundary conditions (3-4 tests: null, empty, single element)
@@ -339,11 +339,11 @@ class AlgoXXXNameTest {
 ### Getting Help
 
 1. **Check Documentation**:
-   - [COMMENT_RULES.md](COMMENT_RULES.md) - Comment standards
-   - [COMMENT_EXAMPLES.md](COMMENT_EXAMPLES.md) - Comment templates
-   - [TEST_RULES.md](TEST_RULES.md) - Test standards
-   - [TEST_EXAMPLES.md](TEST_EXAMPLES.md) - Test templates
-   - [ALGORITHM_GUIDE.md](ALGORITHM_GUIDE.md) - Algorithm patterns
+   - [docs/COMMENT_RULES.md](docs/COMMENT_RULES.md) - Comment standards
+   - [docs/COMMENT_EXAMPLES.md](docs/COMMENT_EXAMPLES.md) - Comment templates
+   - [docs/TEST_RULES.md](docs/TEST_RULES.md) - Test standards
+   - [docs/TEST_EXAMPLES.md](docs/TEST_EXAMPLES.md) - Test templates
+   - [docs/ALGORITHM_GUIDE.md](docs/ALGORITHM_GUIDE.md) - Algorithm patterns
 
 2. **Review Examples**:
    - `src/main/java/com/flyingcode/problem/Algo025MaxIncSubseq.java`
@@ -372,4 +372,5 @@ class AlgoXXXNameTest {
 ---
 
 **Last Updated**: 2025-12-31
-**Documentation Version**: 2.0
+**Documentation Version**: 2.1
+**Changes**: Updated documentation paths to use docs/ directory

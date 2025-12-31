@@ -1,0 +1,266 @@
+package com.flyingcode.search;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+/**
+ * 测试类: BinarySearch
+ * 使用JUnit 5测试二分查找算法的正确性
+ */
+class BinarySearchTest {
+
+    /**
+     * 测试基本功能: 标准有序数组中查找存在的元素
+     */
+    @Test
+    @DisplayName("测试标准有序数组中查找存在的元素")
+    void testStandardArrayWithExistingElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { 1, 3, 5, 7, 9 };
+        int target = 5;
+        int expected = 2;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "有序数组[1,3,5,7,9]中查找5，应该返回索引2");
+    }
+    
+    /**
+     * 测试基本功能: 标准有序数组中查找不存在的元素
+     */
+    @Test
+    @DisplayName("测试标准有序数组中查找不存在的元素")
+    void testStandardArrayWithNonExistingElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { 1, 3, 5, 7, 9 };
+        int target = 4;
+        int expected = -1;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "有序数组[1,3,5,7,9]中查找4，应该返回-1");
+    }
+    
+    /**
+     * 测试边界条件: 空数组
+     */
+    @Test
+    @DisplayName("测试边界条件: 空数组")
+    void testEmptyArray() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = {};
+        int target = 5;
+        int expected = -1;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "空数组中查找任何元素，应该返回-1");
+    }
+    
+    /**
+     * 测试边界条件: null数组
+     */
+    @Test
+    @DisplayName("测试边界条件: null数组")
+    void testNullArray() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = null;
+        int target = 5;
+        int expected = -1;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "null数组中查找任何元素，应该返回-1");
+    }
+    
+    /**
+     * 测试边界条件: 单个元素数组，元素存在
+     */
+    @Test
+    @DisplayName("测试单个元素数组，元素存在")
+    void testSingleElementArrayWithExistingElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { 10 };
+        int target = 10;
+        int expected = 0;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "单个元素数组[10]中查找10，应该返回索引0");
+    }
+    
+    /**
+     * 测试边界条件: 单个元素数组，元素不存在
+     */
+    @Test
+    @DisplayName("测试单个元素数组，元素不存在")
+    void testSingleElementArrayWithNonExistingElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { 10 };
+        int target = 5;
+        int expected = -1;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "单个元素数组[10]中查找5，应该返回-1");
+    }
+    
+    /**
+     * 测试边界条件: 查找数组第一个元素
+     */
+    @Test
+    @DisplayName("测试边界条件: 查找数组第一个元素")
+    void testSearchFirstElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { 1, 2, 3, 4, 5 };
+        int target = 1;
+        int expected = 0;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "有序数组[1,2,3,4,5]中查找第一个元素1，应该返回索引0");
+    }
+    
+    /**
+     * 测试边界条件: 查找数组最后一个元素
+     */
+    @Test
+    @DisplayName("测试边界条件: 查找数组最后一个元素")
+    void testSearchLastElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { 1, 2, 3, 4, 5 };
+        int target = 5;
+        int expected = 4;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "有序数组[1,2,3,4,5]中查找最后一个元素5，应该返回索引4");
+    }
+    
+    /**
+     * 测试特殊情况: 所有元素相同，查找存在的元素
+     */
+    @Test
+    @DisplayName("测试所有元素相同，查找存在的元素")
+    void testAllSameElementsWithExistingElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { 5, 5, 5, 5, 5 };
+        int target = 5;
+        int expected = 2; // 二分查找可能返回任何匹配的索引，这里返回中间索引
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "所有元素相同的数组[5,5,5,5,5]中查找5，应该返回中间索引2");
+    }
+    
+    /**
+     * 测试特殊情况: 包含负数的有序数组
+     */
+    @Test
+    @DisplayName("测试包含负数的有序数组")
+    void testArrayWithNegativeNumbers() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { -5, -3, 0, 2, 4 };
+        int target = -3;
+        int expected = 1;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "包含负数的有序数组[-5,-3,0,2,4]中查找-3，应该返回索引1");
+    }
+    
+    /**
+     * 测试特殊情况: 包含零的有序数组
+     */
+    @Test
+    @DisplayName("测试包含零的有序数组")
+    void testArrayWithZero() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = { -2, 0, 1, 3, 5 };
+        int target = 0;
+        int expected = 1;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "包含零的有序数组[-2,0,1,3,5]中查找0，应该返回索引1");
+    }
+    
+    /**
+     * 测试复杂场景: 长数组中查找中间元素
+     */
+    @Test
+    @DisplayName("测试长数组中查找中间元素")
+    void testLongArrayWithMiddleElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = new int[1000];
+        for (int i = 0; i < 1000; i++) {
+            arr[i] = i * 2;
+        }
+        int target = 998;
+        int expected = 499;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "长数组中查找中间元素998，应该返回索引499");
+    }
+    
+    /**
+     * 测试复杂场景: 长数组中查找边界元素
+     */
+    @Test
+    @DisplayName("测试长数组中查找边界元素")
+    void testLongArrayWithBoundaryElement() {
+        // 准备测试数据
+        BinarySearch search = new BinarySearch();
+        int[] arr = new int[1000];
+        for (int i = 0; i < 1000; i++) {
+            arr[i] = i + 1;
+        }
+        int target = 1;
+        int expected = 0;
+        
+        // 执行测试方法
+        int result = search.search(arr, target);
+        
+        // 验证结果
+        assertEquals(expected, result, "长数组中查找第一个元素1，应该返回索引0");
+    }
+}

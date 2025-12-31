@@ -4,6 +4,7 @@ package com.flyingcode.sort;
  * 堆排序
  * 该类提供一个高效的排序算法, 用于对整数数组进行排序.
  * 算法采用二叉堆数据结构, 通过构建最大堆并逐步取出堆顶元素实现排序, 实现不稳定排序.
+ * 堆排序是一种原地排序算法, 适用于各种规模的数据集.
  */
 public class HeapSort {
 
@@ -28,6 +29,7 @@ public class HeapSort {
    * - 二叉堆性质: 父节点值大于等于子节点值(最大堆)
    * - 数组表示二叉堆: 对于索引为 i 的节点, 左子节点索引为 2*i+1, 右子节点索引为 2*i+2
    * - 迭代+递归结合: 充分利用两种控制结构的优势, 实现高效堆排序
+   * - 原地排序: 无需额外的存储空间, 直接在原数组上操作
    */
 
   /**
@@ -35,6 +37,7 @@ public class HeapSort {
    * - 时间复杂度: O(n log n), 其中 n 是数组长度.
    * - 构建堆: O(n), 线性时间复杂度
    * - 堆调整: 每次 O(log n), 共 n-1 次, 总时间 O(n log n)
+   * - 最好、平均、最坏情况下时间复杂度均为 O(n log n)
    * - 空间复杂度: O(1).
    * - 原地排序, 只需要常数级的额外空间
    * - 递归调用栈深度为 O(log n), 但被常数级空间复杂度覆盖
@@ -43,11 +46,11 @@ public class HeapSort {
   /**
    * 对整数数组进行堆排序
    *
-   * @param arr 待排序的整数数组
-   * @return 排序后的整数数组
+   * @param arr 待排序的整数数组, 可以为null或空数组
+   * @return 排序后的整数数组, 如果输入为null或空数组则直接返回
    */
   public int[] sort(int[] arr) {
-    // 边界情况处理: 空数组或长度小于等于1的数组直接返回
+    // 边界情况处理: 空数组或长度为1的数组无需排序
     if (arr == null || arr.length <= 1) {
       return arr;
     }
@@ -56,7 +59,7 @@ public class HeapSort {
 
     // 第一阶段: 构建最大堆
     // 从最后一个非叶子节点开始, 自底向上遍历所有非叶子节点
-    // 结合迭代和递归: 迭代用于批量处理节点, 递归用于调整子树
+    // 计算公式: 最后一个非叶子节点索引 = n/2 - 1
     for (int i = n / 2 - 1; i >= 0; i--) {
       // 对每个非叶子节点调用heapify, 将其子树调整为最大堆
       heapify(arr, n, i);
@@ -66,12 +69,14 @@ public class HeapSort {
     // 逐步将堆顶元素(最大值)与堆的最后一个元素交换
     for (int i = n - 1; i > 0; i--) {
       // 交换堆顶元素和当前堆的最后一个元素
+      // 最大值被放到数组末尾, 加入已排序区间
       int temp = arr[0];
       arr[0] = arr[i];
       arr[i] = temp;
 
       // 只需要对根节点调用一次heapify
       // 因为其他节点仍保持堆的性质, 只有根节点被破坏
+      // 堆的大小更新为i
       heapify(arr, i, 0);
     }
 
@@ -83,7 +88,7 @@ public class HeapSort {
    * 采用递归方式自顶向下调整子树
    *
    * @param arr 待调整的数组
-   * @param n   堆的大小
+   * @param n   当前堆的大小
    * @param i   要调整的节点索引
    */
   private void heapify(int[] arr, int n, int i) {
@@ -91,19 +96,19 @@ public class HeapSort {
     int left = 2 * i + 1; // 左子节点索引
     int right = 2 * i + 2; // 右子节点索引
 
-    // 如果左子节点大于当前节点, 更新最大值索引
+    // 如果左子节点存在且大于当前节点, 更新最大值索引
     if (left < n && arr[left] > arr[largest]) {
       largest = left;
     }
 
-    // 如果右子节点大于当前最大值, 更新最大值索引
+    // 如果右子节点存在且大于当前最大值, 更新最大值索引
     if (right < n && arr[right] > arr[largest]) {
       largest = right;
     }
 
     // 如果最大值不是当前节点, 说明需要调整
     if (largest != i) {
-      // 交换当前节点和最大值节点
+      // 交换当前节点和最大值节点, 将较大值向上移动
       int temp = arr[i];
       arr[i] = arr[largest];
       arr[largest] = temp;

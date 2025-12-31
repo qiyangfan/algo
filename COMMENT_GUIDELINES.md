@@ -4,7 +4,7 @@
 
 **Language & Punctuation Standards**:
 - **Use Chinese** for all code comments, documentation, and descriptions
-- **[强制要求]** 使用英文标点符号 在所有文本中（逗号、句号、冒号、分号等）- **[绝对禁止]** 使用中文标点符号
+- **[MANDATORY]** Use English punctuation marks in all text (commas, periods, colons, semicolons, etc.) - **[ABSOLUTELY PROHIBITED]** Use Chinese punctuation marks
 - This is a CRITICAL requirement - all Chinese comments must use English punctuation marks exclusively!
 - **No emoji**: Do not use emoji symbols in any code comments or documentation
 
@@ -24,25 +24,32 @@ Although this guideline document is written in English, all code comments genera
 
 This document defines standards for Java code comments in this LeetCode algorithm practice project. All code must strictly follow these standards to ensure consistency and readability.
 
+**Project Structure**:
+- `leetcode/` - LeetCode problem solutions (naming: LeetXXXXProblemName)
+- `problem/` - Algorithm practice problems (naming: AlgoXXXAlgorithmName)
+- `sort/` - Sorting algorithm implementations
+- `structure/` - Data structure definitions (ListNode, TreeNode, etc.)
+- `swordoffer/` - Sword Offer problems
+
 **Important Note**: Contributors are responsible for adding comments only. Do not compile code, generate class files, or write test classes.
 
-## 2. General Rules
-
-### 2.1 Core Principles
-- **Language & Punctuation**: Chinese text with English punctuation marks only - this is a CRITICAL requirement
-- **[强制要求]** 所有中文注释必须使用英文标点符号, 不得使用任何中文标点
-- **Symbol Usage**: Avoid special characters (², ³, ≥, ≤) - use keyboard-friendly alternatives (k*k, >=, <=)
-- **No Emoji**: No emoji symbols (check marks, crosses, warning signs, etc.) in comments
-- **Concise & Clear**: Avoid redundancy, explain only necessary information
-- **Accurate**: Keep comments synchronized with code changes
-- **No Obvious Comments**: Skip self-evident explanations like `int i = 0; // initialize i to 0`
-
-### 2.2 Scope of Responsibility
+**Responsibility Scope**:
 - Correct:  Add code comments following these standards
 - Wrong:  Do not compile code
 - Wrong:  Do not generate class files
 - Wrong:  Do not write test classes
 - Report algorithm issues to relevant personnel
+
+## 2. General Rules
+
+### 2.1 Core Principles
+- **Language & Punctuation**: Chinese text with English punctuation marks only - this is a CRITICAL requirement
+- **[MANDATORY]** All Chinese comments must use English punctuation marks, no Chinese punctuation allowed
+- **Symbol Usage**: Avoid special characters (², ³, ≥, ≤) - use keyboard-friendly alternatives (k*k, >=, <=)
+- **No Emoji**: No emoji symbols (check marks, crosses, warning signs, etc.) in comments
+- **Concise & Clear**: Avoid redundancy, explain only necessary information
+- **Accurate**: Keep comments synchronized with code changes
+- **No Obvious Comments**: Skip self-evident explanations like `int i = 0; // initialize i to 0`
 
 ## 3. Comment Structure Standards
 
@@ -66,6 +73,11 @@ int n = nums.length;  // End-of-line comment
  */
 ```
 
+### 3.3 Code Indentation
+- Use **2 spaces** for indentation (following project style)
+- No tab characters
+- Consistent indentation across all files
+
 ## 4. Algorithm Class Comment Structure
 
 Complete algorithm class comments follow this order:
@@ -81,11 +93,13 @@ Complete algorithm class comments follow this order:
    └─ Time complexity, space complexity with explanations
 
 4. Method-Level Comment
-   └─ Functional description, @param, @return, @throws
+   └─ Functional description, @param, @return
 
 5. Implementation Step Comments
    └─ Inline comments for key logic
 ```
+
+**Note**: Data structure classes (ListNode, TreeNode) only require class-level comments explaining their purpose and structure. No algorithm design or complexity analysis needed.
 
 ## 5. Comment Types and Templates
 
@@ -97,19 +111,48 @@ Complete algorithm class comments follow this order:
 **Template**:
 ```java
 /**
- * [算法中文名称]
- * 该类提供一个[算法特点]的算法, 用于[具体功能描述].
- * 算法采用[核心技术], 实现[性能特点].
- * [可选 - 其他重要特点]
+ * [Algorithm Chinese Name]
+ * 该类提供一个[algorithm feature]的算法, 用于[specific functionality].
+ * 算法采用[core technique], 实现[performance characteristic].
+ * [Optional - other important features]
  */
 ```
 
-**Example**:
+**Examples**:
+
+**Simple Algorithm**:
 ```java
 /**
  * 最长连续递增子序列长度
  * 该类提供一个高效的算法, 用于查找未排序数组中最长的连续递增子序列的长度.
  * 算法采用单次遍历技术, 实现了线性时间复杂度, 空间复杂度为 O(1).
+ */
+```
+
+**Algorithm with Special Method**:
+```java
+/**
+ * 预测赢家: 动态规划数组实现
+ * 本类提供一个算法, 用于判断在双方从数组两端轮流选择数字的游戏中, 先手玩家是否能获胜.
+ * 算法使用动态规划方法, 计算在双方都采用最优策略的情况下, 先手玩家是否能保证获胜或平局.
+ */
+```
+
+**Multi-Method Algorithm**:
+```java
+/**
+ * 二叉树中序遍历
+ * 该类提供两种高效的算法, 用于实现二叉树的中序遍历.
+ * 算法采用递归和迭代两种技术, 均实现了线性时间复杂度, 空间复杂度为 O(n).
+ */
+```
+
+**Sorting Algorithm**:
+```java
+/**
+ * 快速排序
+ * 该类提供一个高效的排序算法, 用于对整数数组进行排序.
+ * 算法采用分治策略, 选择基准元素将数组分割成两部分, 实现不稳定排序.
  */
 ```
 
@@ -122,27 +165,68 @@ Complete algorithm class comments follow this order:
 ```java
 /**
  * 算法设计思路:
- * 1. [第一步描述]
- * 2. [第二步描述]
- *    - [子步骤或细节]
- * 3. [第三步描述]
+ * 1. [Step 1 description]
+ * 2. [Step 2 description]
+ *    - [Sub-step or detail]
+ * 3. [Step 3 description]
  * ...
  *
- * [可选 - 关键技术点]
- * - [技术点1]
- * - [技术点2]
+ * [Optional - Key Technical Points]
+ * - [Technical point 1]
+ * - [Technical point 2]
  */
 ```
 
-**Example**:
+**Examples**:
+
+**Simple Algorithm**:
 ```java
 /**
  * 算法设计思路:
- * 1. 维护两个计数器: maxLength记录全局最长长度, currentLength记录当前连续递增序列长度
+ * 1. 维护两个计数器: maxLength 记录全局最长长度, currentLength 记录当前连续递增序列长度
  * 2. 从第二个元素开始遍历数组, 比较当前元素与前一个元素的大小关系
  * 3. 如果当前元素大于前一个元素, 说明连续递增序列继续, 当前长度加1
  * 4. 如果当前元素小于等于前一个元素, 说明连续递增序列中断, 重新开始计数, 当前长度重置为1
  * 5. 每次更新当前长度时, 同步更新全局最大长度, 取两者中的较大值
+ */
+```
+
+**Algorithm with Key Techniques**:
+```java
+/**
+ * 算法设计思路:
+ * 1. 使用哈希表存储数组元素及其对应的索引, 实现O(1)时间复杂度的查找
+ * 2. 遍历数组中的每个元素 nums[i], 计算与目标值的差值 complement = target - nums[i]
+ * 3. 检查哈希表中是否存在 complement:
+ *    - 若存在, 则找到解, 返回 complement 对应的索引和当前索引 i
+ *    - 若不存在, 则将当前元素 nums[i] 及其索引 i 存入哈希表
+ * 4. 遍历完成后, 若未找到解则返回空数组
+ *
+ * 关键技术点:
+ * - 哈希表的使用: 空间换时间, 将查找复杂度从O(n)降低到O(1)
+ * - 单次遍历: 边遍历边存储, 避免重复计算
+ */
+```
+
+**Multi-Method Algorithm**:
+```java
+/**
+ * 算法设计思路:
+ *
+ * 递归实现:
+ * 1. 中序遍历的顺序是左子树 -> 根节点 -> 右子树
+ * 2. 使用递归实现, 先递归遍历左子树
+ * 3. 访问根节点, 将节点值加入结果列表
+ * 4. 最后递归遍历右子树
+ * 5. 递归终止条件是当前节点为null
+ *
+ * 迭代实现:
+ * 1. 利用栈来模拟递归过程
+ * 2. 初始化当前节点指针为根节点
+ * 3. 当栈不为空或当前节点不为null时, 循环执行以下操作:
+ *    a. 遍历左子树, 将所有左节点入栈, 直到当前节点为null
+ *    b. 弹出栈顶节点, 访问该节点, 将其值加入结果列表
+ *    c. 将当前节点指针指向右子节点
  */
 ```
 
@@ -155,14 +239,16 @@ Complete algorithm class comments follow this order:
 ```java
 /**
  * 算法复杂度分析:
- * - 时间复杂度: O([大O表示]), 其中 n 是[输入规模说明].
- *   [复杂度推导或解释]
- * - 空间复杂度: O([大O表示]).
- *   [空间使用说明]
+ * - 时间复杂度: O([Big O notation]), 其中 n 是[input scale description].
+ *   [Complexity derivation or explanation]
+ * - 空间复杂度: O([Big O notation]).
+ *   [Space usage description]
  */
 ```
 
-**Example**:
+**Examples**:
+
+**Linear Time, Constant Space**:
 ```java
 /**
  * 算法复杂度分析:
@@ -170,6 +256,48 @@ Complete algorithm class comments follow this order:
  *   因为只需要遍历数组一次, 每个元素只访问一次, 所以总操作次数是线性的.
  * - 空间复杂度: O(1), 只使用了常量级的额外空间(两个整型变量).
  *   算法是原地计算, 没有使用额外的数组或数据结构.
+ */
+```
+
+**Linear Time, Linear Space**:
+```java
+/**
+ * 算法复杂度分析:
+ * - 时间复杂度: O(n), 其中 n 是数组的长度.
+ * 因为只需要遍历数组一次, 每个元素的哈希表操作(put和containsKey)都是O(1)时间复杂度
+ * - 空间复杂度: O(n).
+ * 最坏情况下, 需要将数组中的所有元素存入哈希表, 因此空间复杂度为O(n)
+ */
+```
+
+**Log-Linear Time, Log Space**:
+```java
+/**
+ * 算法复杂度分析:
+ * - 时间复杂度: O(n log n), 其中 n 是数组长度.
+ * 平均情况下, 每轮分区将数组分成两个大小相近的子数组, 递归深度为 log n, 每轮分区时间为 O(n)
+ * 最坏情况下, 分区不平衡, 时间复杂度为 O(n^2)
+ * - 空间复杂度: O(log n).
+ * 递归调用栈的深度, 平均情况下为 log n, 最坏情况下为 O(n)
+ */
+```
+
+**Multi-Method Algorithm**:
+```java
+/**
+ * 算法复杂度分析:
+ *
+ * 递归实现:
+ * - 时间复杂度: O(n), 其中 n 是二叉树的节点数量.
+ * 每个节点恰好被访问一次, 因此总时间复杂度是线性的.
+ * - 空间复杂度: O(n).
+ * 最坏情况下, 当二叉树是一条链时, 递归调用栈的深度会达到n, 因此空间复杂度是O(n).
+ *
+ * 迭代实现:
+ * - 时间复杂度: O(n), 其中 n 是二叉树的节点数量.
+ * 每个节点恰好被访问一次, 因此总时间复杂度是线性的.
+ * - 空间复杂度: O(n).
+ * 最坏情况下, 当二叉树是一条链时, 栈的深度会达到n, 因此空间复杂度是O(n).
  */
 ```
 
@@ -181,25 +309,70 @@ Complete algorithm class comments follow this order:
 **Template**:
 ```java
 /**
- * [方法功能描述]
+ * [Method functionality description]
  *
- * @param [参数名] [参数说明]
- * @return [返回值说明]
- * @throws [异常类型] [异常说明]
+ * @param [parameter name] [parameter description]
+ * @return [return value description]
  */
 ```
 
-**Example**:
+**Note**: @throws is only required for methods that explicitly throw exceptions. Most algorithm methods do not need @throws.
+
+**Examples**:
+
+**Simple Method**:
 ```java
 /**
- * Removes duplicates from a sorted array in-place and returns the new length
+ * 查找数组中最长连续递增子序列的长度
  *
- * @param nums the input sorted integer array, note that this array will be modified in-place
- * @return the new length of the array after removing duplicates
- * @throws NullPointerException if the input array is null
+ * 连续递增子序列是指数组中连续位置的元素严格递增的子序列.
+ * 例如: 数组 [1,3,5,4,7] 中, [1,3,5] 和 [4,7] 都是连续递增子序列, 最长长度为3.
+ *
+ * @param nums 输入的整数数组, 可以包含负数, 零和正数, 无需排序
+ * @return 最长连续递增子序列的长度; 如果数组为空或null, 返回0
  */
-public static int solution(int[] nums) {
-    // Method implementation...
+public int solution(int[] nums) {
+    // Implementation
+}
+```
+
+**Method with Constraints**:
+```java
+/**
+ * 计算爬楼梯的不同方法数
+ *
+ * @param n 楼梯的阶数, 范围为1 <= n <= 45
+ * @return 到达第n阶的不同方法数
+ */
+public int solution(int n) {
+    // Implementation
+}
+```
+
+**Method with Detailed Explanation**:
+```java
+/**
+ * 在整数数组中查找两个数, 使其和等于目标值, 并返回这两个数的索引
+ *
+ * @param nums   整数数组, 长度范围为2 <= nums.length <= 10^4, 元素范围为-10^9 <= nums[i] <= 10^9
+ * @param target 目标值, 范围为-10^9 <= target <= 10^9
+ * @return 包含两个数的索引的数组, 索引范围为0 <= index1, index2 < nums.length, 且index1 < index2
+ */
+public int[] twoSum(int[] nums, int target) {
+    // Implementation
+}
+```
+
+**Helper Method**:
+```java
+/**
+ * 递归辅助函数, 用于实现中序遍历
+ *
+ * @param node   当前遍历的节点
+ * @param result 存储遍历结果的列表
+ */
+private void inorderTraversal(TreeNode node, List<Integer> result) {
+    // Implementation
 }
 ```
 
@@ -208,61 +381,231 @@ public static int solution(int[] nums) {
 **Location**: Inside method, before or after key code lines
 **Format**: Inline comments `//`
 
-**Example**:
-```java
-// Get array length
-int n = nums.length;
+**Principles**:
+- Comment **why**, not **what** (the code already shows what)
+- Focus on key logic, boundary conditions, and algorithm steps
+- Use blank lines to separate logical sections
+- Multi-line comments should be placed before the code they explain
 
-// Boundary condition handling: empty array returns 0 directly
-if (n == 0) {
+**Comment Style Guidelines**:
+- Explain the purpose and reasoning behind code
+- Describe algorithm steps and logic flow
+- Clarify boundary condition handling
+- Document variable purposes and invariants
+- Note important data structure operations
+
+**Examples**:
+
+**Variable Initialization with Context**:
+```java
+// 边界条件处理: 空数组或null直接返回0
+if (nums == null || nums.length == 0) {
     return 0;
 }
 
-// Slow pointer: always points to the position of the last processed non-duplicate element
-// Initial value is 0, indicating the first element of the array is guaranteed to be non-duplicate
-int slow = 0;
+// 全局最大长度: 记录遍历过程中找到的最长连续递增子序列长度
+// 初始值为1, 因为非空数组至少有一个元素, 最小长度为1
+int maxLength = 1;
+
+// 当前连续递增序列长度: 记录当前正在遍历的连续递增序列的长度
+// 初始值为1, 表示从数组的第一个元素开始计数
+int currentLength = 1;
 ```
 
-## 6. Complete Algorithm Class Template
+**Algorithm Logic Explanation**:
+```java
+// 从数组的第二个元素开始遍历(索引为1), 与前一元素比较
+for (int i = 1; i < nums.length; i++) {
+    // 判断当前元素是否大于前一个元素
+    if (nums[i] > nums[i - 1]) {
+        // 当前元素大于前一元素, 连续递增序列继续
+        // 当前递增序列长度加1
+        currentLength++;
+
+        // 更新全局最大长度
+        // 比较当前连续递增序列长度和历史最大长度, 取较大值作为新的全局最大长度
+        maxLength = Math.max(maxLength, currentLength);
+    } else {
+        // 当前元素小于等于前一元素, 连续递增序列中断
+        // 从当前元素重新开始计数, 当前长度重置为1
+        currentLength = 1;
+    }
+}
+```
+
+**Loop Invariant**:
+```java
+// 当前阶的方法数 = 到达第i-1阶的方法数 + 到达第i-2阶的方法数
+current = prevPrev + prev;
+// 更新状态: 前前一阶变为前一阶, 前一阶变为当前阶
+prevPrev = prev;
+prev = current;
+```
+
+**Data Structure Operations**:
+```java
+// 遍历数组中的每个元素
+for (int i = 0; i < nums.length; i++) {
+    // 计算当前元素与目标值的差值
+    int complement = target - nums[i];
+
+    // 检查差值是否已经存在于HashMap中
+    if (map.containsKey(complement)) {
+        // 若存在, 则返回差值对应的索引和当前索引
+        return new int[] { map.get(complement), i };
+    }
+
+    // 若不存在, 则将当前元素和其索引添加到HashMap中
+    map.put(nums[i], i);
+}
+```
+
+**Boundary Condition Handling**:
+```java
+// 边界条件: 数组为空或为null, 先手玩家无法获胜
+if (nums == null || nums.length == 0) {
+    return false;
+}
+```
+
+## 6. Complete Algorithm Class Templates
+
+### 6.1 Standard Algorithm Template
 
 ```java
-package com.flyingcode.[package-name]; // 根据实际包名替换: problem 或 leetcode
+package com.flyingcode.problem; // or leetcode, sort, swordoffer
 
 /**
- * [算法中文名称]
- * 该类提供一个[算法特点]的算法, 用于[具体功能描述].
- * 算法采用[核心技术], 实现[性能特点].
+ * [Algorithm Chinese Name]
+ * 该类提供一个[algorithm feature]的算法, 用于[specific functionality].
+ * 算法采用[core technique], 实现[performance characteristic].
  */
-public class [ClassName] {
-// ClassName 命名格式:
-// - problem 包: AlgoXXXAlgorithmName (如 Algo025MaxLengthContinuousIncreasingSubsequenceArray)
-// - leetcode 包: LeetXXXXProblemName (如 Leet0070ClimbStairs)
+public class AlgoXXXProblemName {
+  // Naming format:
+  // - problem package: AlgoXXXAlgorithmName (e.g., Algo025MaxIncSubseq)
+  // - leetcode package: LeetXXXXProblemName (e.g., Leet0070ClimbStairs)
+  // - sort package: AlgorithmName (e.g., QuickSort)
 
-    /**
-     * 算法设计思路:
-     * 1. [步骤1描述]
-     * 2. [步骤2描述]
-     * 3. [步骤3描述]
-     * ...
-     */
+  /**
+   * 算法设计思路:
+   * 1. [Step 1 description]
+   * 2. [Step 2 description]
+   *    - [Sub-step or detail]
+   * 3. [Step 3 description]
+   *
+   * 关键技术点:
+   * - [Technical point 1]
+   * - [Technical point 2]
+   */
 
-    /**
-     * 算法复杂度分析:
-     * - 时间复杂度: O([复杂度]), 其中 n 是[输入规模].
-     *   [复杂度推导说明]
-     * - 空间复杂度: O([复杂度]).
-     *   [空间使用说明]
-     */
+  /**
+   * 算法复杂度分析:
+   * - 时间复杂度: O([complexity]), 其中 n 是[input scale].
+   *   [Complexity derivation explanation]
+   * - 空间复杂度: O([complexity]).
+   *   [Space usage explanation]
+   */
 
-    /**
-     * [方法功能描述]
-     *
-     * @param [参数名] [参数说明]
-     * @return [返回值说明]
-     */
-    public [return-type] solution([parameters]) {
-        // Implementation with inline comments
+  /**
+   * [Method functionality description]
+   *
+   * @param [parameter name] [parameter description]
+   * @return [return value description]
+   */
+  public int solution(int[] nums) {
+    // 边界条件处理
+    if (nums == null || nums.length == 0) {
+      return 0;
     }
+
+    // 算法实现
+    // ...
+
+    return result;
+  }
+}
+```
+
+### 6.2 Multi-Method Algorithm Template
+
+```java
+package com.flyingcode.leetcode;
+
+/**
+ * [Algorithm Chinese Name]
+ * 该类提供多种算法实现, 用于[specific functionality].
+ * 算法采用[core technique 1]和[core technique 2], 均实现[performance characteristic].
+ */
+public class LeetXXXXProblemName {
+
+  /**
+   * 算法设计思路:
+   *
+   * Method 1 implementation:
+   * 1. [Step 1 description]
+   * 2. [Step 2 description]
+   *
+   * Method 2 implementation:
+   * 1. [Step 1 description]
+   * 2. [Step 2 description]
+   */
+
+  /**
+   * 算法复杂度分析:
+   *
+   * Method 1:
+   * - 时间复杂度: O(n)
+   * - 空间复杂度: O(n)
+   *
+   * Method 2:
+   * - 时间复杂度: O(n)
+   * - 空间复杂度: O(1)
+   */
+
+  /**
+   * [Method 1 functionality description]
+   */
+  public List<Integer> solution(TreeNode root) {
+    // 方法1实现
+  }
+
+  /**
+   * [Method 2 functionality description]
+   */
+  public List<Integer> solutionIterative(TreeNode root) {
+    // 方法2实现
+  }
+}
+```
+
+### 6.3 Data Structure Class Template
+
+```java
+package com.flyingcode.structure;
+
+/**
+ * [Data Structure Name]
+ * 该类提供一个[data structure type], 用于[specific purpose].
+ *
+ * [Field description]
+ * [Usage scenario]
+ */
+public class DataStructureName {
+  // 字段声明
+  public int val;
+  public DataStructureName next;
+
+  /**
+   * 构造函数
+   *
+   * @param val [Parameter description]
+   */
+  public DataStructureName(int val) {
+    this.val = val;
+  }
+
+  // 工具方法 (可选)
+  // ...
 }
 ```
 
@@ -270,23 +613,60 @@ public class [ClassName] {
 
 ### 7.1 Language Consistency
 - All comments in **Chinese**
-- Technical terms in English (O(n), BFS, DFS, Union-Find)
+- Technical terms in English (O(n), BFS, DFS, Union-Find, HashMap)
 - Variable/method names follow Java conventions (English)
+- Complexity notation always use "O(n)" format, not "O(n)" (without spaces)
 
 ### 7.2 Comment Quality
 - Use consistent terminology across similar algorithms
 - Maintain parallel structure in numbered lists
-- Uniform complexity notation (always "O(n)", not "O(n)")
+- Focus on **why** and **how**, not just **what**
 - Include "关键技术点" section only for non-obvious optimizations
+- Avoid redundant comments that repeat what the code already shows
 
 ### 7.3 When to Add "关键技术点" Section
 Include when algorithm uses:
-- Non-obvious optimization techniques
-- Important data structure choices
-- Special mathematical or logical tricks
+- Non-obvious optimization techniques (e.g., rolling array, two pointers)
+- Important data structure choices (e.g., HashMap for O(1) lookup)
+- Special mathematical or logical tricks (e.g., XOR, bit manipulation)
 - Multiple phases with distinct strategies
 
 **For straightforward algorithms, numbered steps are sufficient.**
+
+### 7.4 Naming Conventions
+
+**Class Naming**:
+- `problem/` package: `AlgoXXXProblemName` (e.g., `Algo025MaxIncSubseq`)
+- `leetcode/` package: `LeetXXXXProblemName` (e.g., `Leet0070ClimbStairs`)
+- `sort/` package: `AlgorithmName` (e.g., `QuickSort`, `MergeSort`)
+- `swordoffer/` package: `SwordOfferXXProblemName`
+
+**Method Naming**:
+- Main entry method: `solution()` (returns algorithm result)
+- Alternative implementations: `solutionIterative()`, `solutionRecursive()`
+- Helper methods: descriptive names like `inorderTraversal()`, `partition()`
+
+### 7.5 Special Algorithm Patterns
+
+**Dynamic Programming Algorithms**:
+- Clearly explain the DP state definition (e.g., `dp[i][j]` represents...)
+- Explain state transition logic
+- Mention space optimization if applicable
+
+**Recursive Algorithms**:
+- Explain base cases (termination conditions)
+- Describe recursive relation
+- Mention time/space complexity considering recursion depth
+
+**Graph/Tree Algorithms**:
+- Clarify traversal strategy (BFS/DFS/preorder/inorder/postorder)
+- Explain data structure choices (queue for BFS, stack for DFS)
+- Mention visited state handling if applicable
+
+**Sorting Algorithms**:
+- Specify if stable or unstable
+- Mention best/average/worst case scenarios
+- Explain partition/merge strategy if applicable
 
 ## 8. Supporting Documentation System
 
@@ -316,6 +696,47 @@ The project provides complete documentation:
 ## 10. Reference Examples
 
 Complete commented examples in project:
-- **problem 包示例**: `src/main/java/com/flyingcode/problem/Algo025MaxLengthContinuousIncreasingSubsequenceArray.java`
-- **leetcode 包示例**: `src/main/java/com/flyingcode/leetcode/Leet0070ClimbStairs.java`
-- 所有算法类都遵循此标准
+
+**Simple Algorithm**:
+- `src/main/java/com/flyingcode/problem/Algo025MaxIncSubseq.java`
+
+**Hash Table Algorithm**:
+- `src/main/java/com/flyingcode/leetcode/Leet0001TwoSum.java`
+
+**Dynamic Programming Algorithm**:
+- `src/main/java/com/flyingcode/leetcode/Leet0070ClimbStairs.java`
+- `src/main/java/com/flyingcode/problem/Algo032PredictWinnerDP.java`
+
+**Multi-Method Algorithm**:
+- `src/main/java/com/flyingcode/leetcode/Leet0094BinaryTreeInorderTraversal.java`
+
+**Sorting Algorithm**:
+- `src/main/java/com/flyingcode/sort/QuickSort.java`
+
+**Data Structure**:
+- `src/main/java/com/flyingcode/structure/ListNode.java`
+- `src/main/java/com/flyingcode/structure/TreeNode.java`
+
+## 11. Common Mistakes to Avoid
+
+### 11.1 Punctuation Issues
+- Wrong: Using Chinese punctuation marks (Chinese commas, periods, etc.)
+- Correct: Using English punctuation marks
+
+### 11.2 Comment Quality Issues
+- Wrong: Comments repeat code content (e.g., `i++; // increment i`)
+- Correct: Comments explain logical reasoning (e.g., `i++; // move to next position`)
+
+### 11.3 Complexity Analysis Issues
+- Wrong: O(n) (inconsistent spacing)
+- Correct: O(n) (uniform format, no spaces)
+
+### 11.4 Incomplete Comments
+- Wrong: Missing algorithm design approach
+- Wrong: Missing complexity analysis
+- Wrong: Missing method-level Javadoc
+- Correct: Complete comments for all sections
+
+### 11.5 Language Mixing
+- Wrong: Mixing Chinese and English in descriptions
+- Correct: Chinese comments with English technical terms only

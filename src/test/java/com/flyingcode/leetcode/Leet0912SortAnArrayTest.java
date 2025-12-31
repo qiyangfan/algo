@@ -216,4 +216,169 @@ class Leet0912SortAnArrayTest {
         // 验证结果
         assertArrayEquals(expected, result, "只有两个元素的数组应该被正确排序");
     }
+
+    /**
+     * 测试双轴快排: 传统快排和双轴快排结果一致
+     */
+    @Test
+    @DisplayName("测试双轴快排: 传统快排和双轴快排结果一致")
+    void testDualPivotConsistency() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums1 = { 5, 2, 9, 1, 7, 6, 3, 8, 4 };
+        int[] nums2 = nums1.clone();
+        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        // 执行测试方法
+        int[] resultTraditional = algo.solutionWithTraditionalQuickSort(nums1);
+        int[] resultDualPivot = algo.solutionWithDualPivotQuickSort(nums2);
+
+        // 验证两种算法结果一致且正确
+        assertArrayEquals(expected, resultTraditional, "传统快排应该产生正确结果");
+        assertArrayEquals(expected, resultDualPivot, "双轴快排应该产生正确结果");
+    }
+
+    /**
+     * 测试双轴快排边界: 空数组
+     */
+    @Test
+    @DisplayName("测试双轴快排边界: 空数组")
+    void testDualPivotEmptyArray() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = {};
+        int[] expected = {};
+
+        // 执行测试方法
+        int[] result = algo.solutionWithDualPivotQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "双轴快排处理空数组应该返回空数组");
+    }
+
+    /**
+     * 测试双轴快排边界: 单元素
+     */
+    @Test
+    @DisplayName("测试双轴快排边界: 单元素")
+    void testDualPivotSingleElement() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = { 42 };
+        int[] expected = { 42 };
+
+        // 执行测试方法
+        int[] result = algo.solutionWithDualPivotQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "双轴快排处理单元素数组应该返回原数组");
+    }
+
+    /**
+     * 测试传统快排边界: 空数组
+     */
+    @Test
+    @DisplayName("测试传统快排边界: 空数组")
+    void testTraditionalEmptyArray() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = {};
+        int[] expected = {};
+
+        // 执行测试方法
+        int[] result = algo.solutionWithTraditionalQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "传统快排处理空数组应该返回空数组");
+    }
+
+    /**
+     * 测试传统快排边界: 单元素
+     */
+    @Test
+    @DisplayName("测试传统快排边界: 单元素")
+    void testTraditionalSingleElement() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = { 42 };
+        int[] expected = { 42 };
+
+        // 执行测试方法
+        int[] result = algo.solutionWithTraditionalQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "传统快排处理单元素数组应该返回原数组");
+    }
+
+    /**
+     * 测试双轴快排: 已排序数组
+     */
+    @Test
+    @DisplayName("测试双轴快排: 已排序数组")
+    void testDualPivotAlreadySorted() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        // 执行测试方法
+        int[] result = algo.solutionWithDualPivotQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "双轴快排处理已排序数组应该保持不变");
+    }
+
+    /**
+     * 测试传统快排: 已排序数组
+     */
+    @Test
+    @DisplayName("测试传统快排: 已排序数组")
+    void testTraditionalAlreadySorted() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+        // 执行测试方法
+        int[] result = algo.solutionWithTraditionalQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "传统快排处理已排序数组应该保持不变");
+    }
+
+    /**
+     * 测试双轴快排: 包含重复元素
+     */
+    @Test
+    @DisplayName("测试双轴快排: 包含重复元素")
+    void testDualPivotWithDuplicates() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = { 5, 2, 5, 1, 2, 9, 1, 5, 3 };
+        int[] expected = { 1, 1, 2, 2, 3, 5, 5, 5, 9 };
+
+        // 执行测试方法
+        int[] result = algo.solutionWithDualPivotQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "双轴快排应该正确处理包含重复元素的数组");
+    }
+
+    /**
+     * 测试双轴快排: 包含负数
+     */
+    @Test
+    @DisplayName("测试双轴快排: 包含负数")
+    void testDualPivotWithNegatives() {
+        // 准备测试数据
+        Leet0912SortAnArray algo = new Leet0912SortAnArray();
+        int[] nums = { 5, -2, 9, -1, 7, -6, 3, 8, -4 };
+        int[] expected = { -6, -4, -2, -1, 3, 5, 7, 8, 9 };
+
+        // 执行测试方法
+        int[] result = algo.solutionWithDualPivotQuickSort(nums);
+
+        // 验证结果
+        assertArrayEquals(expected, result, "双轴快排应该正确处理包含负数的数组");
+    }
 }

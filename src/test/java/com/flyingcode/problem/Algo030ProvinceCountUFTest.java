@@ -6,10 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * 测试类: Algo030ProvinceCountUF
+ * 测试类: Algo030ProvinceCountDFS
  * 使用JUnit 5测试基于并查集(Union-Find)算法的省份数量计算算法的正确性
  */
-class Algo030ProvinceCountUFTest {
+class Algo030ProvinceCountDFSTest {
 
   /**
    * 测试基本功能: 包含三个独立省份的标准图
@@ -22,7 +22,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试包含三个独立省份的标准图")
     void testStandardGraphWithThreeProvinces() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 0, 0, 0},
       {1, 1, 0, 0, 0},
@@ -43,7 +43,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试所有城市连通形成的单个省份")
     void testAllCitiesConnectedInOneProvince() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 1, 1, 1},
       {1, 1, 1, 1, 1},
@@ -61,7 +61,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试边界条件: 空矩阵")
     void testEmptyMatrix() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {};
         int result = algo.solution(isConnected);
         assertEquals(0, result, "空矩阵应该返回0个省份");
@@ -73,7 +73,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试边界条件: null矩阵")
     void testNullMatrix() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = null;
         int result = algo.solution(isConnected);
         assertEquals(0, result, "null矩阵应该返回0个省份");
@@ -85,7 +85,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试单个城市")
     void testSingleCity() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {{1}};
         int result = algo.solution(isConnected);
         assertEquals(1, result, "单个城市应该形成1个省份");
@@ -100,7 +100,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试没有连接: 每个城市各自是一个省份")
     void testNoConnectionsAllIsolatedCities() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 0, 0, 0, 0},
       {0, 1, 0, 0, 0},
@@ -122,7 +122,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试线性链连接: 所有城市连成一条线")
     void testLinearChainConnection() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 0, 0, 0},
       {1, 1, 1, 0, 0},
@@ -144,7 +144,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试两个独立的连通分量")
     void testTwoDisconnectedComponents() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 1, 0, 0},
       {1, 1, 1, 0, 0},
@@ -170,7 +170,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试星型拓扑: 中心城市连接所有其他城市")
     void testStarTopology() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 1, 1, 1},
       {1, 1, 0, 0, 0},
@@ -194,7 +194,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试复杂图: 包含多个不同大小的省份")
     void testComplexGraphWithMultipleProvinces() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 0, 1, 0, 0, 0, 0, 0, 0},
       {1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
@@ -221,7 +221,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试省份内的非对称连接")
     void testAsymmetricConnections() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 0, 0, 0},
       {1, 1, 1, 0, 0},
@@ -244,7 +244,7 @@ class Algo030ProvinceCountUFTest {
     @Test
     @DisplayName("测试大图: 包含连通分量和多个孤立城市")
     void testLargeGraphWithManyIsolatedCities() {
-        Algo030ProvinceCountUF algo = new Algo030ProvinceCountUF();
+        Algo030ProvinceCountDFS algo = new Algo030ProvinceCountDFS();
         int[][] isConnected = {
       {1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
       {1, 1, 1, 1, 1, 0, 0, 0, 0, 0},

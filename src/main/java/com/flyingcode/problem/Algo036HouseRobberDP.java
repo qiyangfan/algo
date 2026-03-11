@@ -10,17 +10,17 @@ public class Algo036HouseRobberDP {
   /**
    * 算法设计思路:
    * 1. 定义状态:
-   * - first: 表示抢劫前 i-1 个房屋能获得的最大金额
-   * - second: 表示抢劫前 i 个房屋能获得的最大金额
-   * 2. 状态转移方程: current = max(second, first + nums[i])
-   * - 若不抢劫第 i 个房屋, 则最大金额为 second
-   * - 若抢劫第 i 个房屋, 则最大金额为 first + nums[i] (不能抢劫相邻房屋)
+   * - prevprev: 表示抢劫前 i-1 个房屋能获得的最大金额
+   * - prev: 表示抢劫前 i 个房屋能获得的最大金额
+   * 2. 状态转移方程: current = max(prev, prevprev + nums[i])
+   * - 若不抢劫第 i 个房屋, 则最大金额为 prev
+   * - 若抢劫第 i 个房屋, 则最大金额为 prevprev + nums[i] (不能抢劫相邻房屋)
    * 3. 滚动数组优化: 由于每次计算只需要前两个状态, 因此只需要用两个变量来保存中间结果
    * 4. 初始化:
-   * - first = nums[0] (只有一个房屋时, 抢劫该房屋)
-   * - second = max(nums[0], nums[1]) (有两个房屋时, 选择金额较大的那个)
+   * - prevprev = nums[0] (只有一个房屋时, 抢劫该房屋)
+   * - prev = max(nums[0], nums[1]) (有两个房屋时, 选择金额较大的那个)
    * 5. 遍历顺序: 从第三个房屋开始, 依次计算每个房屋的最大抢劫金额
-   * 6. 返回结果: second (抢劫所有房屋能获得的最大金额)
+   * 6. 返回结果: prev (抢劫所有房屋能获得的最大金额)
    *
    * 关键技术点: 滚动数组优化, 将空间复杂度从 O(n) 降低到 O(1)
    */
@@ -50,19 +50,19 @@ public class Algo036HouseRobberDP {
       return nums[0];
     }
 
-    int first = nums[0];
-    int second = Math.max(nums[0], nums[1]);
+    int prevprev = nums[0];
+    int prev = Math.max(nums[0], nums[1]);
 
     // 从第三个房屋开始, 依次计算每个房屋的最大抢劫金额
     for (int i = 2; i < nums.length; i++) {
       // 状态转移: 选择不抢劫当前房屋或抢劫当前房屋
-      int current = Math.max(second, first + nums[i]);
-      first = second;
-      second = current;
+      int current = Math.max(prev, prevprev + nums[i]);
+      prevprev = prev;
+      prev = current;
     }
 
     // 返回抢劫所有房屋能获得的最大金额
-    return second;
+    return prev;
   }
 
 }
